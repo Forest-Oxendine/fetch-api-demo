@@ -4,15 +4,14 @@ import './App.css';
 
 
 function App() { 
-  const [animeFacts, setAnimeFacts] = useState([]);
+  const [animeQuotes, setAnimeQuotes] = useState([]);
 
   useEffect(() => {
     fetch('https://animechan.vercel.app/api/random')
     .then(response => response.json())
-    // .then(quote => console.log(quote))
-    .then(data => setAnimeFacts(data.quote))
+    .then(data => setAnimeQuotes(data.quote))
       .catch(error => console.log(error));
-      console.log(animeFacts);
+      console.log(animeQuotes);
   }, [])
   
   const handleRefresh = () => {
@@ -23,13 +22,15 @@ function App() {
   return (
       <div className="container">
       <div className="content">
-        <h1 className="title">Random Anime Facts</h1>
+        <h1 className="title">Random Anime Quotes</h1>
+        
         <ul className='list'>
-          {animeFacts.map((quote, index) => (
+        {animeQuotes}
+          {/* {animeFacts.map((quote, index) => (
             <li className="item" key={index}>
               {quote}
             </li>
-          ))}
+          ))} */}
         </ul>
         <button className='button' onClick={handleRefresh}>Give me more facts!</button>
       </div>
