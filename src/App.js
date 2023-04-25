@@ -23,7 +23,7 @@ function App() {
       <div className="container">
       <div className="content">
         <h1 className="title">Random Anime Quotes</h1>
-        
+        <img src="./imgs/Boondocks.jpeg"></img>
         <ul className='list'>
         {animeQuotes}
           {/* {animeFacts.map((quote, index) => (
