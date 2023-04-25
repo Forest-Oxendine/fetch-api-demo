@@ -1,40 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-
-
-
-function CatFacts() {
-
-    const [catInfo, setCatInfo] = useState([]);
+const [dogFacts, setDogFacts] = useState([]);
 
 useEffect(() => {
-    fetch('https://cat-fact.herokuapp.com/facts?number=3')
-    .then(response => response.json())
-    .then(data => setCatInfo(data.facts))
-    .catch(error => console.log(error));
-    console.log(catInfo);
+  fetch('https://dogapi.dog/api/facts?number=5')
+  .then(response => response.json())
+  .then(data => setDogFacts(data.facts))
+  .catch(error => console.log(error));
+  console.log(dogFacts);
 }, [])
 
 const handleRefresh = () => {
-    window.location.reload();
+  window.location.reload();
 }
 
 
-return (
+  return (
     <div className="container">
-    <div className="content">
-      <h1 className="title">Random Cat Facts</h1>
-      <ul className='list'>
-        {catInfo.map((text, index) => (
-          <li className="item" key={index}>
-            {text}
-          </li>
-        ))}
-      </ul>
-      <button className='button' onClick={handleRefresh}>Give me more facts!</button>
+      <div className="content">
+        <h1 className="title">Random Dog Facts</h1>
+        <img src="./imgs/dog.jpg"></img>
+        <ul className='list'>
+          {dogFacts.map((fact, index) => (
+            <li className="item" key={index}>
+              {fact}
+            </li>
+          ))}
+        </ul>
+        <button className='button' onClick={handleRefresh}>Give me more facts!</button>
+      </div>
     </div>
-  </div>
- );
+  );
 }
-
-export default CatFacts;
